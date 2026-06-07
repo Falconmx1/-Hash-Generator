@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔑 Hash Generator Pro</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>🔑 Hash Generator <span class="badge">Python Power</span></h1>
+        
+        <div class="tabs">
+            <button class="tab-btn active" onclick="openTab('texto')">📝 Texto</button>
+            <button class="tab-btn" onclick="openTab('archivo')">📁 Archivo</button>
+            <button class="tab-btn" onclick="openTab('comparar')">⚖️ Comparar</button>
+        </div>
+        
+        <!-- Pestaña Texto -->
+        <div id="texto" class="tab-content active">
+            <textarea id="inputText" placeholder="Escribe o pega tu texto aquí..."></textarea>
+            
+            <div class="algoritmo-select">
+                <label>🔒 Algoritmo:</label>
+                <select id="algoritmo">
+                    <option value="md5">MD5</option>
+                    <option value="sha1">SHA-1</option>
+                    <option value="sha256">SHA-256</option>
+                    <option value="sha512">SHA-512</option>
+                </select>
+            </div>
+            
+            <div class="salt-box">
+                <label>🧂 Salt (opcional):</label>
+                <input type="text" id="salt" placeholder="Añade un salt para mayor seguridad">
+            </div>
+            
+            <button id="generateBtn" class="btn-primary">✨ Generar Hash</button>
+            
+            <div class="result-section">
+                <h3>📋 Hash generado:</h3>
+                <div id="result" class="result-box"></div>
+                <button id="copyBtn" class="btn-copy">📋 Copiar</button>
+            </div>
+        </div>
+        
+        <!-- Pestaña Archivo -->
+        <div id="archivo" class="tab-content">
+            <input type="file" id="fileInput" accept=".txt,.csv,.json,.py,.js,.html">
+            <div class="algoritmo-select">
+                <label>🔒 Algoritmo:</label>
+                <select id="algoritmoFile">
+                    <option value="md5">MD5</option>
+                    <option value="sha1">SHA-1</option>
+                    <option value="sha256">SHA-256</option>
+                    <option value="sha512">SHA-512</option>
+                </select>
+            </div>
+            <div class="salt-box">
+                <label>🧂 Salt (opcional):</label>
+                <input type="text" id="saltFile" placeholder="Salt para archivo">
+            </div>
+            <button id="hashFileBtn" class="btn-primary">📁 Hashear Archivo</button>
+            <div class="result-section">
+                <h3>📋 Hash del archivo:</h3>
+                <div id="fileResult" class="result-box"></div>
+                <button id="copyFileBtn" class="btn-copy">📋 Copiar</button>
+            </div>
+        </div>
+        
+        <!-- Pestaña Comparar -->
+        <div id="comparar" class="tab-content">
+            <div class="compare-box">
+                <label>Hash #1:</label>
+                <textarea id="hash1" placeholder="Pega el primer hash..."></textarea>
+            </div>
+            <div class="compare-box">
+                <label>Hash #2:</label>
+                <textarea id="hash2" placeholder="Pega el segundo hash..."></textarea>
+            </div>
+            <button id="compareBtn" class="btn-primary">🔍 Comparar Hashes</button>
+            <div id="compareResult" class="result-box"></div>
+        </div>
+    </div>
+    
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
